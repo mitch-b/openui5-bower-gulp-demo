@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+		<title>OpenUI5 Demo</title>
+
+		<script type="text/javascript"
+			id="sap-ui-bootstrap"
+			src="resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m,sap.ui.layout"
+			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-xx-bindingSyntax="complex"
+			data-sap-ui-resourceRoots='{
+				"demo": "./"
+			}'>
+		</script>
+		<script>
+			sap.ui.getCore().attachInit(function() {
+			    new sap.m.Shell({
+			        app: new sap.ui.core.ComponentContainer({
+			            height : "100%",
+			            name : "demo"
+			        })
+			    }).placeAt("content");
+			});
+		</script>
+	</head>
+	<body class="sapUiBody">
+		<div id="content" />
+	</body>
+</html>

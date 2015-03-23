@@ -1,0 +1,25 @@
+<mvc:View
+    controllerName="demo.view.Master"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+	<Page
+	    id="page"
+	    title="Product Events">
+	    <content>
+	        <List
+	            id="list"
+	            mode="{device>/listMode}"
+	            items="{/Events}"
+	            growing="true"
+	            growingScrollToLoad="true">
+	            <items>
+	                <ObjectListItem
+	                    type="{device>/listItemType}"
+	                    title="{EVENT_NAME}">
+	                </ObjectListItem>
+	            </items>
+	        </List>
+	    </content>
+	</Page>
+</mvc:View>

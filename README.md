@@ -11,6 +11,7 @@ Demonstrate building and deploying an OpenUI5 application using Bower and Gulp
 
 ```bash
 $ npm install && bower install
+$ gulp copy-ui5 # copy UI5 resources from bower into app/
 ```
 
 # Running
