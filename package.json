@@ -1,0 +1,14 @@
+{
+  "author": {
+    "name": "Mitchell Barry",
+    "email": "mitch.barry@gmail.com",
+    "url": "http://mitchbarry.com"
+  },
+  "name": "OpenUI5Demo",
+  "version": "1.0.0",
+  "description": "Building an OpenUI5 application using Bower and Gulp",
+  "private": true,
+  "dependencies": {
+    "gulp": "3.8.11"
+  }
+}
