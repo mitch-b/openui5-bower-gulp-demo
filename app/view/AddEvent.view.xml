@@ -1,0 +1,47 @@
+<mvc:View
+	controllerName="demo.view.AddEvent"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:c="sap.ui.core"
+	xmlns="sap.m">
+	<Page
+		class="sapUiFioriObjectPage"
+		title="Add Event">
+		<l:Grid
+			defaultSpan="L12 M12 S12"
+			width="auto">
+			<l:content>
+				<f:SimpleForm
+					id="idAddEventForm"
+					minWidth="800"
+					maxContainerCols="2"
+					editable="true"
+					layout="ResponsiveGridLayout"
+					labelSpanL="3"
+					labelSpanM="3"
+					emptySpanL="4"
+					emptySpanM="4"
+					columnsL="1"
+					columnsM="1"
+					class="editableForm">
+					<f:content>
+						<!-- Basic info -->
+						<c:Title text="Event Information" />
+						<Label text="Event Name" />
+						<Input value="{newProduct>/EVENT_NAME}" />
+						<Label text="Comment" />
+						<TextArea value="{newProduct>/COMMENT}" />
+					</f:content>
+				</f:SimpleForm>
+			</l:content>
+		</l:Grid>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Save" type="Emphasized" press="onSave" />
+				<Button text="Cancel" press="onCancel" />
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

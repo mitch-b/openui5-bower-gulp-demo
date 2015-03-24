@@ -6,16 +6,32 @@
 	<Page
 	    id="page"
 	    title="Product Events">
+		<subHeader>
+			<Bar id="searchBar">
+				<contentMiddle>
+					<SearchField
+						id="searchField"
+						showRefreshButton="{device>/isNoTouch}"
+						search="onSearch"
+						tooltip="Search"
+						width="100%">
+					</SearchField>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
 	    <content>
 	        <List
 	            id="list"
 	            mode="{device>/listMode}"
 	            items="{/Events}"
 	            growing="true"
-	            growingScrollToLoad="true">
+	            growingScrollToLoad="true"
+	            select="onSelect"
+	            >
 	            <items>
 	                <ObjectListItem
 	                    type="{device>/listItemType}"
+	                    press="onSelect"
 	                    title="{EVENT_NAME}">
 	                </ObjectListItem>
 	            </items>

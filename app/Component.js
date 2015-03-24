@@ -12,7 +12,7 @@ sap.ui.core.UIComponent.extend("demo.Component", {
         rootView: "demo.view.App",
         config: {
             eventService: {
-                url: "http://endpoint.com/api/odata"
+                url: "http://example.com/api/odata"
             }
         },
         routing: {
@@ -65,7 +65,7 @@ sap.ui.core.UIComponent.extend("demo.Component", {
             mConfig.eventService.url,
             true
         );
-
+        oModel.setDefaultCountMode("None");
         this.setModel(oModel);
 
         // set device model (phone/desktop support)
