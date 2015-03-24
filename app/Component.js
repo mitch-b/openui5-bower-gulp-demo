@@ -11,6 +11,7 @@ sap.ui.core.UIComponent.extend("demo.Component", {
         },
         rootView: "demo.view.App",
         config: {
+            resourceBundle : "i18n/messageBundle.properties",
             eventService: {
                 url: "http://example.com/api/odata"
             }
@@ -60,6 +61,16 @@ sap.ui.core.UIComponent.extend("demo.Component", {
         sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
 
         var mConfig = this.getMetadata().getConfig();
+
+        // always use absolute paths relative to our own component
+        // (relative paths will fail if running in the Fiori Launchpad)
+        var oRootPath = jQuery.sap.getModulePath("demo");
+
+        // set i18n model
+        var i18nModel = new sap.ui.model.resource.ResourceModel({
+            bundleUrl : [oRootPath, mConfig.resourceBundle].join("/")
+        });
+        this.setModel(i18nModel, "i18n");
 
         var oModel = new sap.ui.model.odata.ODataModel(
             mConfig.eventService.url,

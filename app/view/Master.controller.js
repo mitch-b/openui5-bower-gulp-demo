@@ -175,15 +175,6 @@ demo.util.Controller.extend("demo.view.Master", {
 		this.getView().byId("list").removeSelections();
 	},
 
-	showDetail : function(oItem) {
-		// If we're on a phone, include nav in history; if not, don't.
-		var bReplace = jQuery.device.is.phone ? false : true;
-		var eventId = oItem.getBindingContext().getProperty("EVENT_ID");
-		this.getRouter().navTo("event", {
-			eventId : eventId
-		}, bReplace);
-	},
-
 	onAddEvent : function() {
 		this.getRouter().myNavToWithoutHash({ 
 			currentView : this.getView(),

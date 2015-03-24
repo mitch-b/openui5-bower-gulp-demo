@@ -13,5 +13,9 @@
                 title="Comments: {COMMENTS}">
             </ObjectHeader>
         </content>
+        <footer>
+            <Toolbar>
+            </Toolbar>
+        </footer>
     </Page>
 </mvc:View>

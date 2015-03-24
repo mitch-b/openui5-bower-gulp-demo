@@ -14,8 +14,9 @@
     "tests"
   ],
   "dependencies": {
-    "openui5-sap.m": "openui5/packaged-sap.m#~1.26.8",
-    "openui5-sap.ui.layout": "openui5/packaged-sap.ui.layout#~1.26.8",
-    "openui5-themelib_sap_bluecrystal": "openui5/packaged-themelib_sap_bluecrystal#~1.26.8"
+    "openui5-sap.m": "openui5/packaged-sap.m#1.26.9",
+    "openui5-sap.ui.layout": "openui5/packaged-sap.ui.layout#1.26.9",
+    "openui5-sap.ui.unified": "openui5/packaged-sap.ui.unified#1.26.9",
+    "openui5-themelib_sap_bluecrystal": "openui5/packaged-themelib_sap_bluecrystal#1.26.9"
   }
 }

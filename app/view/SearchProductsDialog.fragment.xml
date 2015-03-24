@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <SelectDialog
+    title="Products"
+    class="sapUiPopupWithPadding"
+    items="{/Products}"
+    search="product_handleValueHelpSearch"
+    confirm="_handleValueHelpClose"
+    cancel="_handleValueHelpClose">
+    <StandardListItem
+      title="{PRODUCT_DESC}"
+      description="{PRODUCT_ID}"
+      info="{PRODUCT_ATTRIB1}" />
+  </SelectDialog>
+</core:FragmentDefinition>

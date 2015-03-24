@@ -37,5 +37,14 @@
 	            </items>
 	        </List>
 	    </content>
+	    <footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button
+					icon="sap-icon://add"
+					tooltip="Add Event"
+					press="onAddEvent" />
+			</Toolbar>
+		</footer>
 	</Page>
 </mvc:View>

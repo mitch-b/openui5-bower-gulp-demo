@@ -13,6 +13,8 @@ gulp.task("copy-ui5", function() {
 		.pipe(gulp.dest(paths.dist + "resources/"));
 	gulp.src("./bower_components/openui5-sap.ui.layout/resources/**/*")
 		.pipe(gulp.dest(paths.dist + "resources/"));
+	gulp.src("./bower_components/openui5-sap.ui.unified/resources/**/*")
+		.pipe(gulp.dest(paths.dist + "resources/"));
 	gulp.src("./bower_components/openui5-themelib_sap_bluecrystal/resources/**/*")
 		.pipe(gulp.dest(paths.dist + "resources/"));
 });
