@@ -45,6 +45,8 @@ environments.forEach(function(env) {
 		fs.writeFile("app/config.json", JSON.stringify(appConfig));
 	});
 
+	gulp.task("run:" + env, ["copy-ui5", "build:" + env, "serve"]);
+
 	if (env == "prod") {
 		// minify ?
 	}
