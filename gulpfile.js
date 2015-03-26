@@ -1,5 +1,6 @@
 var gulp = require("gulp"),
-    fs = require("fs");
+    fs = require("fs"),
+    webserver = require("gulp-webserver");
 
 var paths = {
 	dist: "app/"
@@ -8,6 +9,15 @@ var paths = {
 gulp.task("default", ["copy-ui5", "build:dev"]);
 
 var environments = ["dev", "qa", "prod"];
+
+gulp.task("serve", function() {
+	gulp.src(paths.dist)
+		.pipe(webserver({
+			port: 3000,
+			livereload: true,
+			open: true
+		}));
+});
 
 gulp.task("copy-ui5", function() {
 	// manually maintain this with new libraries
