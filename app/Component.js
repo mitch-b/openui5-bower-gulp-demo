@@ -11,10 +11,8 @@ sap.ui.core.UIComponent.extend("demo.Component", {
         },
         rootView: "demo.view.App",
         config: {
-            resourceBundle : "i18n/messageBundle.properties",
-            eventService: {
-                url: "http://example.com/api/odata"
-            }
+            appConfig: "config.json", // config.json built with Gulp build:dev task
+            resourceBundle: "i18n/messageBundle.properties"
         },
         routing: {
             config: {
@@ -72,8 +70,16 @@ sap.ui.core.UIComponent.extend("demo.Component", {
         });
         this.setModel(i18nModel, "i18n");
 
+        var appConfigModel = new sap.ui.model.json.JSONModel();
+        appConfigModel.loadData(
+            mConfig.appConfig, // path
+            {}, // parameters
+            false // async (false, we want to load right away)
+        );
+        this.setModel(appConfigModel, "appConfig");
+
         var oModel = new sap.ui.model.odata.ODataModel(
-            mConfig.eventService.url,
+            appConfigModel.getData().eventService,
             true
         );
         oModel.setDefaultCountMode("None");

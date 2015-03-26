@@ -15,7 +15,6 @@ demo.util.Controller.extend("demo.view.Detail", {
         }
 
         this.getRouter().getRoute("event").attachMatched(this.onRouteMatched, this);
-
     },
 
     onDataLoaded : function() {
