@@ -19,6 +19,11 @@ gulp.task("serve", function() {
 		}));
 });
 
+gulp.task("copy-moment", function() {
+	gulp.src("./bower_components/moment/moment.js")
+		.pipe(gulp.dest(paths.dist + "vendor-js/"));
+});
+
 gulp.task("copy-ui5", function() {
 	// manually maintain this with new libraries
 	// until you figure out gulp better
@@ -34,6 +39,8 @@ gulp.task("copy-ui5", function() {
 		.pipe(gulp.dest(paths.dist + "resources/"));
 });
 
+gulp.task("copy-dependencies", ["copy-moment", "copy-ui5"]);
+
 environments.forEach(function(env) {
 	gulp.task("build:" + env, function() {
 		// adjust app/config.json
@@ -45,7 +52,7 @@ environments.forEach(function(env) {
 		fs.writeFile("app/config.json", JSON.stringify(appConfig));
 	});
 
-	gulp.task("run:" + env, ["copy-ui5", "build:" + env, "serve"]);
+	gulp.task("run:" + env, ["copy-dependencies", "build:" + env, "serve"]);
 
 	if (env == "prod") {
 		// minify ?
