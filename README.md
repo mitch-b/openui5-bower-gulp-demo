@@ -21,7 +21,8 @@ You need to adjust the OData service it hits inside the `./config.dev.json` file
 # Running
 
 ```bash
-$ gulp run:dev
+$ gulp default      # prepare runtime artifacts
+$ gulp run:dev      # setup config files, run webserver
 ```
 
 Gulp webserver should start up [http://localhost:3000/](http://localhost:3000). 
