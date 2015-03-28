@@ -8,7 +8,8 @@ var paths = {
 	dist: "app/"
 };
 
-gulp.task("default", ["copy-ui5", "build:dev"]);
+gulp.task("default", ["copy-dependencies", "build:dev"]);
+gulp.task("copy-dependencies", ["copy-moment", "copy-ui5"]);
 
 gulp.task("serve", function() {
 	gulp.src(paths.dist)
@@ -39,8 +40,6 @@ gulp.task("copy-ui5", function() {
 		.pipe(gulp.dest(paths.dist + "resources/"));
 });
 
-gulp.task("copy-dependencies", ["copy-moment", "copy-ui5"]);
-
 environments.forEach(function(env) {
 	gulp.task("build:" + env, function() {
 		// adjust app/config.json
@@ -63,7 +62,7 @@ environments.forEach(function(env) {
 		fs.writeFile("app/config.json", JSON.stringify(appConfig));
 	});
 
-	gulp.task("run:" + env, ["copy-dependencies", "build:" + env, "serve"]);
+	gulp.task("run:" + env, ["build:" + env, "serve"]);
 
 	if (env == "prod") {
 		// minify ?
