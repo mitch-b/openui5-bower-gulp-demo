@@ -10,19 +10,19 @@ Demonstrate building and deploying an OpenUI5 application using Bower and Gulp
 
 # Getting Started
 
-```bash
-$ npm install && bower install
-```
+    $ npm install && bower install
 
 # Configuring
 
-You need to adjust the OData service it hits inside the `./config.dev.json` file (or whichever environment you want to test). The build process will merge the `./config.json` and `./config.[ENV].json` files and create a new `./app/config.json` file which will be parsed by the OpenUI5 application.
+You need to adjust the OData service it hits inside the `./config.json` file. 
+The build process will copy up this file and only the relevant environment 
+properties to create a new `./app/config.json` file which will be parsed 
+by the OpenUI5 application.
 
 # Running
 
-```bash
-$ gulp default      # prepare runtime artifacts
-$ gulp run:dev      # setup config files, run webserver
-```
+    $ gulp default      # prepare runtime artifacts
+    $ gulp run:dev      # setup config files, run webserver
+
 
 Gulp webserver should start up [http://localhost:3000/](http://localhost:3000). 
