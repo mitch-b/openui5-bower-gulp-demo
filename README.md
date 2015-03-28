@@ -12,8 +12,8 @@ Demonstrate building and deploying an OpenUI5 application using Bower and Gulp
 
 * `app/` contains all UI5 files to be deployed to web server
     * `i18n/`  language files
-    * `util`   shared components
-    * `view`   XML views, fragments, and JS controllers
+    * `util/`   shared components
+    * `view/`   XML views, fragments, and JS controllers
     * `Component.js` UIComponent initializer (entry point of application)
     * `config.json` *compiled* appConfig settings
     * `index.html`
