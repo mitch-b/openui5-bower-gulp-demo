@@ -2,3 +2,7 @@ app/resources/
 app/vendor-js/
 node_modules/
 bower_components/
+
+# IntelliJ IDEA
+.idea/
+*.iml
