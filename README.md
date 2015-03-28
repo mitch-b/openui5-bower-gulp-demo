@@ -10,14 +10,14 @@ Demonstrate building and deploying an OpenUI5 application using Bower and Gulp
 
 # Project Structure
 
-* `app/`
-  * `i18n/`  language files
-  * `util`   shared components
-  * `view`   XML views, fragments, and JS controllers
-  * `Component.js` UIComponent initializer (entry point of application)
-  * `config.json` *compiled* appConfig settings
-  * `index.html`
-  * `Router.js` UI5 router implementation
+* `app/` contains all UI5 files to be deployed to web server
+    * `i18n/`  language files
+    * `util`   shared components
+    * `view`   XML views, fragments, and JS controllers
+    * `Component.js` UIComponent initializer (entry point of application)
+    * `config.json` *compiled* appConfig settings
+    * `index.html`
+    * `Router.js` UI5 router implementation
 * `bower.json` front-end dependencies (UI5 framework libraries)
 * `config.json` *master* appConfig settings (source for `app/config.json`)
 * `gulpfile.json` Gulp task runner config
