@@ -8,6 +8,21 @@ Demonstrate building and deploying an OpenUI5 application using Bower and Gulp
 * `npm` installed
 * `bower` installed
 
+# Project Structure
+
+* `app/`
+  * `i18n/`  language files
+  * `util`   shared components
+  * `view`   XML views, fragments, and JS controllers
+  * `Component.js` UIComponent initializer (entry point of application)
+  * `config.json` *compiled* appConfig settings
+  * `index.html`
+  * `Router.js` UI5 router implementation
+* `bower.json` front-end dependencies (UI5 framework libraries)
+* `config.json` *master* appConfig settings (source for `app/config.json`)
+* `gulpfile.json` Gulp task runner config
+* `package.json` npm dependencies
+
 # Getting Started
 
     $ npm install && bower install
@@ -23,6 +38,5 @@ by the OpenUI5 application.
 
     $ gulp default      # prepare runtime artifacts
     $ gulp run:dev      # setup config files, run webserver
-
 
 Gulp webserver should start up [http://localhost:3000/](http://localhost:3000). 
