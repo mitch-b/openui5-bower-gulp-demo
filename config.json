@@ -1,14 +1,12 @@
 {
-	"build": 0,
-
-    "dev": {
-      "eventService": "http://dev-example.com/api/odata"
-    },
-    "qa": {
-      "eventService": "http://qa-example.com/api/odata"
-    },
-    "prod": {
-      "eventService": "http://example.com/api/odata"
-    }
-
+  "build": 0,
+  "dev": {
+    "eventService": "http://dev-example.com/api/odata"
+  },
+  "qa": {
+    "eventService": "http://qa-example.com/api/odata"
+  },
+  "prod": {
+    "eventService": "http://example.com/api/odata"
+  }
 }

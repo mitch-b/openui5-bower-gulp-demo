@@ -7,6 +7,8 @@ Demonstrate building and deploying an OpenUI5 application using Bower and Gulp
 
 * `npm` installed
 * `bower` installed
+* `gulp` installed
+    * `npm i -g gulp`
 
 # Project Structure
 

@@ -1,50 +1,50 @@
 <mvc:View
-    controllerName="demo.view.Master"
-    displayBlock="true"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-	<Page
-	    id="page"
-	    title="Product Events">
-		<subHeader>
-			<Bar id="searchBar">
-				<contentMiddle>
-					<SearchField
-						id="searchField"
-						showRefreshButton="{device>/isNoTouch}"
-						search="onSearch"
-						tooltip="Search"
-						width="100%">
-					</SearchField>
-				</contentMiddle>
-			</Bar>
-		</subHeader>
-	    <content>
-	        <List
-	            id="list"
-	            mode="{device>/listMode}"
-	            items="{/Events}"
-	            growing="true"
-	            growingScrollToLoad="true"
-	            select="onSelect"
-	            >
-	            <items>
-	                <ObjectListItem
-	                    type="{device>/listItemType}"
-	                    press="onSelect"
-	                    title="{EVENT_NAME}">
-	                </ObjectListItem>
-	            </items>
-	        </List>
-	    </content>
-	    <footer>
-			<Toolbar>
-				<ToolbarSpacer/>
-				<Button
-					icon="sap-icon://add"
-					tooltip="Add Event"
-					press="onAddEvent" />
-			</Toolbar>
-		</footer>
-	</Page>
+        controllerName="demo.view.Master"
+        displayBlock="true"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+    <Page
+            id="page"
+            title="Product Events">
+        <subHeader>
+            <Bar id="searchBar">
+                <contentMiddle>
+                    <SearchField
+                            id="searchField"
+                            showRefreshButton="{device>/isNoTouch}"
+                            search="onSearch"
+                            tooltip="Search"
+                            width="100%">
+                    </SearchField>
+                </contentMiddle>
+            </Bar>
+        </subHeader>
+        <content>
+            <List
+                    id="list"
+                    mode="{device>/listMode}"
+                    items="{/Events}"
+                    growing="true"
+                    growingScrollToLoad="true"
+                    select="onSelect"
+                    >
+                <items>
+                    <ObjectListItem
+                            type="{device>/listItemType}"
+                            press="onSelect"
+                            title="{EVENT_NAME}">
+                    </ObjectListItem>
+                </items>
+            </List>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button
+                        icon="sap-icon://add"
+                        tooltip="Add Event"
+                        press="onAddEvent"/>
+            </Toolbar>
+        </footer>
+    </Page>
 </mvc:View>

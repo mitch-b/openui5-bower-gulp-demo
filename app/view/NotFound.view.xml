@@ -1,15 +1,15 @@
 <mvc:View
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m">
-	<Page
-		title="Not Found"
-		enableScrolling="false">
-		<content>
-			<Text text="Unable to find this event." class="spacerTop" width="100%" textAlign="Center" />
-		</content>
-		<footer>
-			<Toolbar>
-			</Toolbar>
-		</footer>
-	</Page>
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+    <Page
+            title="Not Found"
+            enableScrolling="false">
+        <content>
+            <Text text="Unable to find this event." class="spacerTop" width="100%" textAlign="Center"/>
+        </content>
+        <footer>
+            <Toolbar>
+            </Toolbar>
+        </footer>
+    </Page>
 </mvc:View>

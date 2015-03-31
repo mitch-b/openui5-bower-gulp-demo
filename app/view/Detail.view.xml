@@ -1,16 +1,16 @@
 <mvc:View
-    controllerName="demo.view.Detail"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns:core="sap.ui.core"
-    xmlns="sap.m">
+        controllerName="demo.view.Detail"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:core="sap.ui.core"
+        xmlns="sap.m">
     <Page
-        showNavButton="{device>/isPhone}"
-        navButtonPress="onNavBack"
-        class="sapUiFioriObjectPage"
-        title="Event">
+            showNavButton="{device>/isPhone}"
+            navButtonPress="onNavBack"
+            class="sapUiFioriObjectPage"
+            title="Event">
         <content>
             <ObjectHeader
-                title="Comments: {COMMENTS}">
+                    title="Comments: {COMMENTS}">
             </ObjectHeader>
         </content>
         <footer>

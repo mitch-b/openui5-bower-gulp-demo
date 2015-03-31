@@ -1,18 +1,18 @@
 <mvc:View
-        controllerName="demo.view.AddEvent"
+        controllerName="demo.view.ModifyEvent"
         xmlns:mvc="sap.ui.core.mvc"
         xmlns:l="sap.ui.layout"
         xmlns:f="sap.ui.layout.form"
         xmlns:c="sap.ui.core"
         xmlns="sap.m">
-    <Page
-            class="sapUiFioriObjectPage"
-            title="Add Event">
+    <Page class="sapUiFioriObjectPage"
+          title="Modify Event">
         <c:Fragment fragmentName="demo.view.fragments.EventForm" type="XML"/>
         <footer>
             <Toolbar>
                 <ToolbarSpacer/>
                 <Button text="Save" type="Emphasized" press="onSave"/>
+                <Button text="Delete" type="Reject" press="onDelete"/>
                 <Button text="Cancel" press="onCancel"/>
             </Toolbar>
         </footer>
