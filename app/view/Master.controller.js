@@ -1,4 +1,5 @@
 jQuery.sap.require("demo.util.Controller");
+jQuery.sap.require("demo.util.Formatter");
 
 demo.util.Controller.extend("demo.view.Master", {
   onInit: function () {
@@ -12,6 +13,9 @@ demo.util.Controller.extend("demo.view.Master", {
       // let any subscribers (Detail) know that the initial load is done
       oEventBus.publish("Master", "InitialLoadFinished");
     }, this);
+
+    // if router starts at detail, make sure we update our list to match selected item
+    oEventBus.subscribe("Detail", "TabChanged", this.onDetailTabChanged, this);
 
     //on phones, we will not have to select anything in the list so we don't need to attach to events
     if (sap.ui.Device.system.phone) {
@@ -44,7 +48,7 @@ demo.util.Controller.extend("demo.view.Master", {
         this.getEventBus().publish("Master", "FirstItemSelected", oFirstItem);
       } else {
         //no event in the list - show the create view
-        this.onAddEvent();
+        this.onAddProduct();
       }
     });
   },
@@ -69,7 +73,13 @@ demo.util.Controller.extend("demo.view.Master", {
   },
 
   onSearch: function (oEvent) {
-    var filters = this.getSearchTermFilter();
+    // add filter for search
+    var filters = [];
+    var searchString = this.getView().byId("searchField").getValue();
+    if (searchString && searchString.length > 0) {
+      filters = [ new sap.ui.model.Filter("Name", sap.ui.model.FilterOperator.Contains, searchString) ];
+    }
+
     // update list binding
     this.getView().byId("list").getBinding("items").filter(filters);
   },
@@ -77,93 +87,29 @@ demo.util.Controller.extend("demo.view.Master", {
   showDetail: function (oItem) {
     // If we're on a phone, include nav in history; if not, don't.
     var bReplace = jQuery.device.is.phone ? false : true;
-    this.getRouter().navTo("event", {
+    var iProductId = oItem.getBindingContext().getProperty("ID");
+    this.getRouter().navTo("product", {
       from: "main",
-      id: oItem.getBindingContext().getPath().substr(1)
+      id: iProductId,
+      tab: this.sTab || "supplier"
     }, bReplace);
-  },
-
-  getSearchTermFilter: function () {
-    // this.getView() will return Master.view.xml instance which contains txtSearch
-    var searchTerm = this.getView().byId("searchField").getValue();
-    if (!searchTerm) {
-      return null;
-    }
-
-    var filterList = [];
-    // this is hacky, but solves need for case sensitivity
-    var nameFilter = new sap.ui.model.Filter({
-      path: "tolower(EVENT_NAME)",
-      operator: sap.ui.model.FilterOperator.Contains,
-      value1: "'" + searchTerm.toLowerCase() + "'"
-    });
-    filterList.push(nameFilter);
-
-    // customer name
-    // this is hacky, but solves need for case sensitivity
-    var customerNameFilter = new sap.ui.model.Filter({
-      path: "tolower(Customer/CUSTOMER_LVL_DESC1)",
-      operator: sap.ui.model.FilterOperator.Contains,
-      value1: "'" + searchTerm.toLowerCase() + "'"
-    });
-    filterList.push(customerNameFilter);
-
-    // old material name
-    // this is hacky, but solves need for case sensitivity
-    var oldMaterialFilter = new sap.ui.model.Filter({
-      path: "tolower(OldProduct/PRODUCT_DESC)",
-      operator: sap.ui.model.FilterOperator.Contains,
-      value1: "'" + searchTerm.toLowerCase() + "'"
-    });
-    filterList.push(oldMaterialFilter);
-
-    if (!isNaN(searchTerm)) {
-      // this will bind any value to suspected Edm.Decimal (type of EVENT_ID)
-      // so if we are not searching on number, don't add to filter list
-      var eventIdFilter = new sap.ui.model.Filter({
-        path: "EVENT_ID",
-        operator: sap.ui.model.FilterOperator.EQ,
-        value1: searchTerm
-      });
-      filterList.push(eventIdFilter);
-
-
-      // customer id
-      var customerIdFilter = new sap.ui.model.Filter({
-        path: "CUSTOMER_ID",
-        operator: sap.ui.model.FilterOperator.Contains,
-        value1: searchTerm
-      });
-      filterList.push(customerIdFilter);
-
-      // old material id
-      var oldMaterialIdFilter = new sap.ui.model.Filter({
-        path: "OLD_MATERIAL",
-        operator: sap.ui.model.FilterOperator.Contains,
-        value1: searchTerm
-      });
-      filterList.push(oldMaterialIdFilter);
-    }
-
-    // set the 'and' attribute to false to OR the filtering conditions
-    return new sap.ui.model.Filter({filters: filterList, and: false});
   },
 
   // sChannel : eventBus
   onDetailChanged: function (sChannel, sEvent, oData) {
-    var sEventPath = oData.sEventPath;
+    var sProductPath = oData.sProductPath;
     //Wait for the list to be loaded once
     this.afterLoaded(function () {
       var oList = this.getView().byId("list");
       var oSelectedItem = oList.getSelectedItem();
       // the correct item is already selected
-      if (oSelectedItem && oSelectedItem.getBindingContext().getPath() === sEventPath) {
+      if (oSelectedItem && oSelectedItem.getBindingContext().getPath() === sProductPath) {
         return;
       }
 
       var aItems = oList.getItems();
       for (var i = 0; i < aItems.length; i++) {
-        if (aItems[i].getBindingContext().getPath() === sEventPath) {
+        if (aItems[i].getBindingContext().getPath() === sProductPath) {
           oList.setSelectedItem(aItems[i], true);
           break;
         }
@@ -171,14 +117,18 @@ demo.util.Controller.extend("demo.view.Master", {
     });
   },
 
+  onDetailTabChanged : function (sChannel, sEvent, oData) {
+    this.sTab = oData.sTabKey;
+  },
+
   onNotFound: function () {
     this.getView().byId("list").removeSelections();
   },
 
-  onAddEvent: function () {
+  onAddProduct: function () {
     this.getRouter().myNavToWithoutHash({
       currentView: this.getView(),
-      targetViewName: "demo.view.AddEvent",
+      targetViewName: "demo.view.AddProduct",
       targetViewType: "XML",
       transition: "slide"
     });

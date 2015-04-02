@@ -5,7 +5,7 @@
         xmlns="sap.m">
     <Page
             id="page"
-            title="Product Events">
+            title="{i18n>masterTitle}">
         <subHeader>
             <Bar id="searchBar">
                 <contentMiddle>
@@ -23,16 +23,21 @@
             <List
                     id="list"
                     mode="{device>/listMode}"
-                    items="{/Events}"
+                    items="{/Products}"
                     growing="true"
                     growingScrollToLoad="true"
                     select="onSelect"
                     >
                 <items>
                     <ObjectListItem
-                            type="{device>/listItemType}"
-                            press="onSelect"
-                            title="{EVENT_NAME}">
+                        type="{device>/listItemType}"
+                        press="onSelect"
+                        title="{Name}"
+                        number="{
+                            path: 'Price',
+                            formatter: 'demo.util.Formatter.currencyValue'
+                        }"
+                        numberUnit="USD">
                     </ObjectListItem>
                 </items>
             </List>
@@ -42,8 +47,8 @@
                 <ToolbarSpacer/>
                 <Button
                         icon="sap-icon://add"
-                        tooltip="Add Event"
-                        press="onAddEvent"/>
+                        tooltip="{i18n>masterFooterAddButtonTooltip}"
+                        press="onAddProduct"/>
             </Toolbar>
         </footer>
     </Page>

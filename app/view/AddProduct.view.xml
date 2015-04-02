@@ -1,5 +1,5 @@
 <mvc:View
-        controllerName="demo.view.AddEvent"
+        controllerName="demo.view.AddProduct"
         xmlns:mvc="sap.ui.core.mvc"
         xmlns:l="sap.ui.layout"
         xmlns:f="sap.ui.layout.form"
@@ -7,8 +7,8 @@
         xmlns="sap.m">
     <Page
             class="sapUiFioriObjectPage"
-            title="Add Event">
-        <c:Fragment fragmentName="demo.view.fragments.EventForm" type="XML"/>
+            title="{i18n>addProductTitle}">
+        <c:Fragment fragmentName="demo.view.fragments.ProductForm" type="XML"/>
         <footer>
             <Toolbar>
                 <ToolbarSpacer/>

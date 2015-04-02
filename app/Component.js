@@ -31,20 +31,11 @@ sap.ui.core.UIComponent.extend("demo.Component", {
           targetControl: "splitApp",
           subroutes: [
             {
-              pattern: "{id}",
-              name: "event",
+              pattern: "product/{id}/:tab:",
+              name: "product",
               view: "Detail",
               targetAggregation: "detailPages",
-              viewLevel: 1,
-              subroutes: [
-                {
-                  pattern: "{id}/modify",
-                  name: "modifyEvent",
-                  view: "ModifyEvent",
-                  targetAggregation: "detailPages",
-                  viewLevel: 2
-                }
-              ]
+              viewLevel: 1
             }
           ]
         },
@@ -91,7 +82,13 @@ sap.ui.core.UIComponent.extend("demo.Component", {
 
     var oModel = new sap.ui.model.odata.ODataModel(
       appConfigModel.getData().eventService,
-      true
+      {
+        json: true,
+        headers: {
+          // remove this line if you are NOT using cors-anywhere
+          "X-Requested-With": "OpenUI5"
+        }
+      }
     );
     oModel.setDefaultCountMode("None");
     this.setModel(oModel);
