@@ -43,32 +43,34 @@ by the OpenUI5 application.
 
 ## Set Up Your Read/Write Northwind Service
 
+The Northwind service hosted at odata.org has a handy read/write service we will utilize. However, the service 
+does not support CORS, so unless you're already using a proxy, this will make things easier for you to run.
+
 1. Go to this URL, it will generate a new URL for you to use.
 
-    [http://services.odata.org/V2/(S(readwrite))/OData/OData.svc/](http://services.odata.org/V2/(S(readwrite))/OData/OData.svc/)
+[http://services.odata.org/V2/(S(readwrite))/OData/OData.svc/](http://services.odata.org/V2/(S(readwrite))/OData/OData.svc/)
 
 1. Copy the new URL you are redirected to in your address bar. You will want to preface it with the `cors-anywhere` proxy service. Combine the following 2 URLs:
     1. http://cors-anywhere.herokuapp.com/
     1. services.odata.org/V2/(S(`YOUR_UNIQUE_ID`))/OData/OData.svc/
         * replace `YOUR_UNIQUE_ID` with your redirected URL
 
-  You can now create a full URL like:
+  You can now create a full URL for example:
 
-    http://cors-anywhere.herokuapp.com/services.odata.org/V2/(S(YOUR_UNIQUE_ID))/OData/OData.svc/
+    http://cors-anywhere.herokuapp.com/services.odata.org/V2/(S(xxxxxxxxxxxxxxxxxxxxxxxx))/OData/OData.svc/
 
 1. Paste this URL into `./config.json` under the `dev` object. Your config should now look something like:
 
-```json
-{
-  "build": 0,
 
-  "dev": {
-    "eventService": "http://cors-anywhere.herokuapp.com/services.odata.org/V2/(S(YOUR_UNIQUE_ID))/OData/OData.svc/"
-  },
+    {
+      "build": 0,
 
-  ... 
-}
-```
+      "dev": {
+        "eventService": "http://cors-anywhere.herokuapp.com/services.odata.org/V2/(S(xxxxxxxxxxxxxxxxxxxxxxxx))/OData/OData.svc/"
+      },
+    
+      ... 
+    }
 
 You can now read/write from "your own" Northwind OData instance! If the cors-anywhere service is not available, you can look at creating your own instance [here](https://www.npmjs.com/package/cors-anywhere).
 
