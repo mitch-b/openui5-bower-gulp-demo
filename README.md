@@ -1,4 +1,4 @@
-OpenUI5 Sample Application
+SAPUI5/OpenUI5 Sample Application
 ==========================
 
 ![OpenUI5](http://openui5.org/images/OpenUI5_new_big_side.png)
