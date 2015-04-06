@@ -62,13 +62,13 @@ does not support CORS, so unless you're already using a proxy, this will make th
 1. Paste this URL into `./config.json` under the `dev` object. Your config should now look something like:
 
 
-    {
-      "build": 0,
-      "dev": {
-        "eventService": "http://cors-anywhere.herokuapp.com/services.odata.org/V2/(S(xxxxxxxxxxxxxxxxxxxxxxxx))/OData/OData.svc/"
-      },
-      ... 
-    }
+        {
+          "build": 0,
+          "dev": {
+            "eventService": "http://cors-anywhere.herokuapp.com/services.odata.org/V2/(S(xxxxxxxxxxxxxxxxxxxxxxxx))/OData/OData.svc/"
+          },
+          ... 
+        }
 
 You can now read/write from "your own" Northwind OData instance! If the cors-anywhere service is not available, you can look at creating your own instance [here](https://www.npmjs.com/package/cors-anywhere).
 
