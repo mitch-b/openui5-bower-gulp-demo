@@ -64,11 +64,9 @@ does not support CORS, so unless you're already using a proxy, this will make th
 
     {
       "build": 0,
-
       "dev": {
         "eventService": "http://cors-anywhere.herokuapp.com/services.odata.org/V2/(S(xxxxxxxxxxxxxxxxxxxxxxxx))/OData/OData.svc/"
       },
-    
       ... 
     }
 
