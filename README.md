@@ -1,3 +1,6 @@
+> Update (Dec 2016) : This repository contains a lot of deprecated "best-practices" and should only be used as a reference.
+
+
 SAPUI5/OpenUI5 Sample Application
 ==========================
 
